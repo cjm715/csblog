@@ -2,24 +2,20 @@
 // Daniel Shiffman
 // http://natureofcode.com
 
-// Flock class
-// Does very little, simply manages the ArrayList of all the boids
+// Flock object
+// Does very little, simply manages the array of all the boids
 
-class Flock {
-  ArrayList<Boid> boids; // An ArrayList for all the boids
+function Flock() {
+  // An array for all the boids
+    this.boids = []; // Initialize the array
 
-  Flock() {
-    boids = new ArrayList<Boid>(); // Initialize the ArrayList
-  }
-
-  void run() {
-    for (Boid b : boids) {
-      b.run(boids);  // Passing the entire list of boids to each boid individually
+  this.run = function(desiredSeperation, neighbordist, desiredCohesion) {
+    for (var i = 0; i < this.boids.length; i++) {
+      this.boids[i].run(this.boids, desiredSeperation, neighbordist, desiredCohesion);  // Passing the entire list of boids to each boid individually
     }
-  }
+  };
 
-  void addBoid(Boid b) {
-    boids.add(b);
-  }
-
+  this.addBoid = function(b) {
+    this.boids.push(b);
+  };
 }
