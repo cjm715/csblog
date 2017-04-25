@@ -9,9 +9,9 @@ function Flock() {
   // An array for all the boids
     this.boids = []; // Initialize the array
 
-  this.run = function() {
+  this.run = function(desiredSeperation, neighbordist, desiredCohesion) {
     for (var i = 0; i < this.boids.length; i++) {
-      this.boids[i].run(this.boids);  // Passing the entire list of boids to each boid individually
+      this.boids[i].run(this.boids, desiredSeperation, neighbordist, desiredCohesion);  // Passing the entire list of boids to each boid individually
     }
   };
 

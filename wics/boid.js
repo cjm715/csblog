@@ -13,8 +13,8 @@ function Boid(x,y) {
   this.maxspeed = 3;    // Maximum speed
     this.maxforce = 0.05; // Maximum steering force
 
-  this.run = function(boids) {
-    this.flock(boids);
+  this.run = function(boids,desiredSeperation, neighbordist, desiredCohesion) {
+    this.flockDynamic(boids,desiredSeperation, neighbordist, desiredCohesion);
     this.update();
     this.borders();
     this.render();
@@ -26,10 +26,10 @@ function Boid(x,y) {
   };
 
   // We accumulate a new acceleration each time based on three rules
-  this.flock = function(boids) {
-    var sep = this.separate(boids);   // Separation
-    var ali = this.align(boids);      // Alignment
-    var coh = this.cohesion(boids);   // Cohesion
+  this.flockDynamic = function(boids, desiredSeperation, neighbordist, desiredCohesion) {
+    var sep = this.separate(boids,desiredSeperation);   // Separation
+    var ali = this.align(boids,neighbordist);      // Alignment
+    var coh = this.cohesion(boids,desiredCohesion);   // Cohesion
     // Arbitrarily weight these forces
     sep.mult(1.5);
     ali.mult(1.0);
@@ -90,8 +90,8 @@ function Boid(x,y) {
 
   // Separation
   // Method checks for nearby boids and steers away
-  this.separate = function(boids) {
-    var desiredseparation = 25.0;
+  this.separate = function(boids, desiredseparation) {
+    // var desiredseparation = desiredseparation;
     var steer = createVector(0,0);
     var count = 0;
     // For every boid in the system, check if it's too close
@@ -125,8 +125,8 @@ function Boid(x,y) {
 
   // Alignment
   // For every nearby boid in the system, calculate the average velocity
-  this.align = function(boids) {
-    var neighbordist = 50;
+  this.align = function(boids, neighbordist) {
+    // var neighbordist = neighbordist;
     var sum = createVector(0,0);
     var count = 0;
     for (var i = 0; i < boids.length; i++) {
@@ -150,8 +150,8 @@ function Boid(x,y) {
 
   // Cohesion
   // For the average location (i.e. center) of all nearby boids, calculate steering vector towards that location
-  this.cohesion = function(boids) {
-    var neighbordist = 50;
+  this.cohesion = function(boids, desiredCohesion) {
+    var neighbordist = desiredCohesion;
     var sum = createVector(0,0);   // Start with empty vector to accumulate all locations
     var count = 0;
     for (var i = 0; i < boids.length; i++) {
