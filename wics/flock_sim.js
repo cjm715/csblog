@@ -8,28 +8,44 @@
 
 // Click mouse to add boids into the system
 
-Flock flock;
+var flock;
+var slider;
+var text;
+var userinput;
 
-void setup() {
-  size(640,360);
+function setup() {
+
+  createCanvas(640,360);
   flock = new Flock();
+
+  userinput = createInput('50')
+  slider = createSlider(0,200,userinput.value());
+
   // Add an initial set of boids into the system
-  for (int i = 0; i < 200; i++) {
-    Boid b = new Boid(width/2,height/2);
+  for (var i = 0; i < 60; i++) {
+    var b = new Boid(width/2,height/2);
     flock.addBoid(b);
   }
 }
 
-void draw() {
-  background(255);
-  flock.run();
+function upDateTextBox(){
+  userinput.value(slider.value())
+}
 
-  // Instructions
-  fill(0);
-  text("Drag the mouse to generate new boids.",10,height-16);
+function updateSlider(){
+  slider.value(userinput.value())
+}
+
+function draw() {
+  background(100);
+
+  slider.input(upDateTextBox)
+  userinput.input(updateSlider)
+  // console.log(userinput.value())
+  flock.run();
 }
 
 // Add a new boid into the System
-void mouseDragged() {
+function mouseDragged() {
   flock.addBoid(new Boid(mouseX,mouseY));
 }
