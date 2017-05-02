@@ -41,7 +41,7 @@ function setup() {
     // Population controls
     var populationControls = createDiv('Population:    ');
     populationControls.parent(controls);
-    populationTxtBox = createInput(50);
+    populationTxtBox = createInput(80);
     populationTxtBox.parent(populationControls);
     populationSlider = createSlider(0, 200, populationTxtBox.value());
     populationSlider.parent(populationControls);
@@ -49,7 +49,7 @@ function setup() {
     // Seperation Controls
     var seperationControls = createDiv('Seperation:    ');
     seperationControls.parent(controls);
-    seperationTxtBox = createInput(20);
+    seperationTxtBox = createInput(16);
     seperationTxtBox.parent(seperationControls);
     seperationSlider = createSlider(0, 200, seperationTxtBox.value());
     seperationSlider.parent(seperationControls);
@@ -57,7 +57,7 @@ function setup() {
     // Cohesion Controls
     var cohesionControls = createDiv('Cohesion:    ');
     cohesionControls.parent(controls);
-    cohesionTxtBox = createInput(20);
+    cohesionTxtBox = createInput(44);
     cohesionTxtBox.parent(cohesionControls);
     cohesionSlider = createSlider(0, 200, cohesionTxtBox.value());
     cohesionSlider.parent(cohesionControls);
