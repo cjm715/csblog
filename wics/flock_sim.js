@@ -32,7 +32,7 @@ function setup() {
 
     var sketch = select('#sketch-holder')
 
-    canvas = createCanvas(640, 360);
+    canvas = createCanvas(360, 360);
     canvas.parent(sketch);
 
     var controls = createDiv('');
@@ -75,9 +75,8 @@ function setup() {
     reRunButton = createButton('Rerun Sim Env');
     reRunButton.parent(controls)
 
-    // var sketch = select('#sketch-holder');
-    // sketch.style('float', 'left')
-    // sketch.style('margin', '20px')
+    sketch.style('float', 'left')
+    sketch.style('margin', '20px')
 
     initilizeFlockSim();
 }
