@@ -22,12 +22,12 @@ function seperationSliderEvent() {
     seperationTxtBox.value(seperationSlider.value())
 }
 
-function popluationSliderEvent() {
-    populationTxtBox.value(popluationSlider.value())
+function populationSliderEvent() {
+    populationTxtBox.value(populationSlider.value())
     initilizeFlockSim()
 }
 
-function popluationTextBoxEvent() {
-    popluationSlider.value(populationTxtBox.value())
+function populationTextBoxEvent() {
+    populationSlider.value(populationTxtBox.value())
     initilizeFlockSim()
 }
