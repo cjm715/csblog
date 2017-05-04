@@ -28,6 +28,10 @@ function populationSliderEvent() {
 }
 
 function populationTextBoxEvent() {
+    if (populationTxtBox.value() > 150) {
+        populationTxtBox.value(150)
+    }
+
     populationSlider.value(populationTxtBox.value())
     initilizeFlockSim()
 }

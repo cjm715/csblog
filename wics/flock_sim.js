@@ -29,54 +29,56 @@ var canvas;
 
 
 function setup() {
+    var canvasWidth = 360;
+    var canvasHeight = 360;
 
-    var sketch = select('#sketch-holder')
+    var canvasDiv = select('#canvasDiv')
+    var sketchDiv = select('#sketch-holder')
+    //sketchDiv.style('position: relative')
+    canvas = createCanvas(canvasWidth, canvasHeight);
+    //canvas = createCanvas(360, 360);
+    canvas.parent(canvasDiv);
+    //sketchDiv.style('width: ${canvasWidth}')
 
-    canvas = createCanvas(360, 360);
-    canvas.parent(sketch);
 
-    var controls = createDiv('');
-    controls.parent(sketch);
+    var controls = select('#controlsDiv')
+    // controls.style('position: relative')
 
     // Population controls
-    var populationControls = createDiv('Population:    ');
-    populationControls.parent(controls);
+    var populationControls = select('#population');
     populationTxtBox = createInput(80);
     populationTxtBox.parent(populationControls);
-    populationSlider = createSlider(0, 200, populationTxtBox.value());
+    populationSlider = createSlider(0, 150, populationTxtBox.value());
     populationSlider.parent(populationControls);
 
+
     // Seperation Controls
-    var seperationControls = createDiv('Seperation:    ');
-    seperationControls.parent(controls);
+    var seperationControls = select('#seperation');
     seperationTxtBox = createInput(16);
     seperationTxtBox.parent(seperationControls);
     seperationSlider = createSlider(0, 200, seperationTxtBox.value());
     seperationSlider.parent(seperationControls);
 
+
     // Cohesion Controls
-    var cohesionControls = createDiv('Cohesion:    ');
-    cohesionControls.parent(controls);
+    var cohesionControls = select('#cohesion');
     cohesionTxtBox = createInput(44);
     cohesionTxtBox.parent(cohesionControls);
     cohesionSlider = createSlider(0, 200, cohesionTxtBox.value());
     cohesionSlider.parent(cohesionControls);
 
-
     // Align Controls
-    var alignControls = createDiv('Align:    ');
-    alignControls.parent(controls);
+    var alignControls = select('#alignment');
     alignTxtBox = createInput(20);
     alignTxtBox.parent(alignControls);
     alignSlider = createSlider(0, 200, alignTxtBox.value());
     alignSlider.parent(alignControls);
 
+    reRunButton = createButton('Rerun');
+    reRunButton.parent('#button')
 
-    reRunButton = createButton('Rerun Sim Env');
-    reRunButton.parent(controls)
-
-    sketch.style('float', 'left')
-    sketch.style('margin', '20px')
+    var caption = select('.caption');
+    caption.style(`width: ${canvasWidth}`);
 
     initilizeFlockSim();
 }

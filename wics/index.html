@@ -33,6 +33,7 @@
     color:green
   }
 </style>-->
+    <link rel="stylesheet" href="../Computer Modern/Serif/cmun-serif.css">
 
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 
@@ -41,9 +42,19 @@
 <body>
     <a href="../index.html"> Home </a>
 
-
     <h1> What exactly <i>is</i>  complex systems science? </h1>
-    <p size=12pt>Author: Uriah Israel and Chris Miles</p>
+    <div style="position: relative">
+        <span style='font-size: 14pt'><b>Uriah Israel</b> </span>
+        <span style='font-size: 12pt; right: 0; position: absolute'><i>ulisrael@umich.edu  </i></span>
+        <div></div>
+        <span style='font-size: 14pt'><b>Chris Miles </b></span>
+        <span style='font-size: 12pt; right: 0; position: absolute'><i>cmiless@umich.edu </i></span>
+    </div>
+    <div style='font-size: 14pt'><i>Center for the Study of Complex Systems, U. of Michigan, Ann Arbor, MI 48109-1107 </i></div>
+
+    <p></p>
+    <h2>Introduction
+    </h2>
 
     <p>
         As a 5th year physics graduate student working at the Center for the Study of Complex Systems, I am frequently asked, "What is complex systems?" This is a great question and it may seem unsatisfactory but many complex systems researchers would provide
@@ -64,8 +75,46 @@
         series titled "The Nature of Code". I highly recommend this tutorial for those interested in making similar simulations on their own. I think an interactive component can also help the reader make more sense of these systems.
     </p>
 
+    <h2>Flocking
+    </h2>
+
     <div id="sketch-holder">
-        <!-- Our sketch will go here! -->
+        <div id='canvasDiv'>
+        </div>
+        <div id="controlsDiv">
+            <table>
+                <tr>
+                    <td>
+                        <div id='population' class="controlRow">Population</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='seperation' class="controlRow"> Seperation </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div id='cohesion' class="controlRow"> Cohesion </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='alignment' class="controlRow"> Alignment </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='button' class="controlRow"> </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class="caption">
+            Figure 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare
+            massa mauris ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut.
+        </p>
     </div>
 
 
@@ -73,9 +122,30 @@
         We begin our exploration by considering a now canonical example of flocking. Click on the empty square below to generate a collection of birds.
     </p>
     <p>
-        more text....
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
     </p>
-
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
 </body>
 
 </html>
