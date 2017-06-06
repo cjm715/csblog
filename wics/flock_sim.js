@@ -8,7 +8,7 @@
 
 // Click mouse to add boids into the system
 
-var sketch_flock = new p5(function( s ) {
+var sketch_flock = function(s) {
     var flock;
     var reRunButton;
 
@@ -294,4 +294,6 @@ var sketch_flock = new p5(function( s ) {
   };
 }
 
-})
+}
+
+var myp5 = new p5(sketch_flock);
