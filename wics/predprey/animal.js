@@ -1,4 +1,4 @@
-var s = function( p ) {
+var s = new p5(function( p ) {
 
   var x = 100;
   var y = 100;
@@ -7,14 +7,14 @@ var s = function( p ) {
       var canvasWidth = 360;
       var canvasHeight = 360;
 
-      var canvasDiv = select('#canvasDiv-pp')
-      var sketchDiv = select('#sketch-holder-pp')
+      var canvasDiv = p.select('#canvasDiv-pp')
+      var sketchDiv = p.select('#sketch-holder-pp')
       //sketchDiv.style('position: relative')
-      canvas = createCanvas(canvasWidth, canvasHeight);
+      canvas = p.createCanvas(canvasWidth, canvasHeight);
       //canvas = createCanvas(360, 360);
       canvas.parent(canvasDiv);
 
-      p.createCanvas(700, 410);
+    
   };
 
   p.draw = function() {
@@ -22,6 +22,4 @@ var s = function( p ) {
     p.fill(255);
     p.rect(x,y,50,50);
   };
-};
-
-var myp5 = new p5(s);
+});

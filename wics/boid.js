@@ -4,11 +4,10 @@
 
 // Boid class
 // Methods for Separation, Cohesion, Alignment added
-
 function Boid(x,y) {
-  this.acceleration = createVector(0,0);
-  this.velocity = createVector(random(-1,1),random(-1,1));
-  this.position = createVector(x,y);
+  this.acceleration = s.createVector(0,0);
+  this.velocity = s.createVector(s.random(-1,1),s.random(-1,1));
+  this.position = s.createVector(x,y);
   this.r = 3.0;
   this.maxspeed = 3;    // Maximum speed
     this.maxforce = 0.05; // Maximum steering force
@@ -66,33 +65,34 @@ function Boid(x,y) {
 
   this.render = function() {
     // Draw a triangle rotated in the direction of velocity
-    var theta = this.velocity.heading() + radians(90);
-    fill(127);
-    stroke(200);
-    push();
-    translate(this.position.x,this.position.y);
-    rotate(theta);
-    beginShape();
-    vertex(0, -this.r*2);
-    vertex(-this.r, this.r*2);
-    vertex(this.r, this.r*2);
-    endShape(CLOSE);
-    pop();
+    var theta = this.velocity.heading() + s.radians(90);
+
+    s.fill(127);
+    s.stroke(200);
+    s.push();
+    s.translate(this.position.x,this.position.y);
+    s.rotate(theta);
+    s.beginShape();
+    s.vertex(0, -this.r*2);
+    s.vertex(-this.r, this.r*2);
+    s.vertex(this.r, this.r*2);
+    s.endShape(s.CLOSE);
+    s.pop();
   };
 
   // Wraparound
   this.borders = function() {
-    if (this.position.x < -this.r)  this.position.x = width +this.r;
-    if (this.position.y < -this.r)  this.position.y = height+this.r;
-    if (this.position.x > width +this.r) this.position.x = -this.r;
-    if (this.position.y > height+this.r) this.position.y = -this.r;
+    if (this.position.x < -this.r)  this.position.x = s.width +this.r;
+    if (this.position.y < -this.r)  this.position.y = s.height+this.r;
+    if (this.position.x > s.width +this.r) this.position.x = -this.r;
+    if (this.position.y > s.height+this.r) this.position.y = -this.r;
   };
 
   // Separation
   // Method checks for nearby boids and steers away
   this.separate = function(boids, desiredseparation) {
     // var desiredseparation = desiredseparation;
-    var steer = createVector(0,0);
+    var steer = s.createVector(0,0);
     var count = 0;
     // For every boid in the system, check if it's too close
     for (var i = 0; i < boids.length; i++) {
@@ -127,7 +127,7 @@ function Boid(x,y) {
   // For every nearby boid in the system, calculate the average velocity
   this.align = function(boids, neighbordist) {
     // var neighbordist = neighbordist;
-    var sum = createVector(0,0);
+    var sum = s.createVector(0,0);
     var count = 0;
     for (var i = 0; i < boids.length; i++) {
       var d = p5.Vector.dist(this.position,boids[i].position);
@@ -144,7 +144,7 @@ function Boid(x,y) {
       steer.limit(this.maxforce);
       return steer;
     } else {
-      return createVector(0,0);
+      return s.createVector(0,0);
     }
   };
 
@@ -152,7 +152,7 @@ function Boid(x,y) {
   // For the average location (i.e. center) of all nearby boids, calculate steering vector towards that location
   this.cohesion = function(boids, desiredCohesion) {
     var neighbordist = desiredCohesion;
-    var sum = createVector(0,0);   // Start with empty vector to accumulate all locations
+    var sum = s.createVector(0,0);   // Start with empty vector to accumulate all locations
     var count = 0;
     for (var i = 0; i < boids.length; i++) {
       var d = p5.Vector.dist(this.position,boids[i].position);
@@ -165,7 +165,7 @@ function Boid(x,y) {
       sum.div(count);
       return this.seek(sum);  // Steer towards the location
     } else {
-      return createVector(0,0);
+      return s.createVector(0,0);
     }
   };
 }

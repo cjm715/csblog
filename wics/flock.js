@@ -7,7 +7,7 @@
 
 function Flock() {
   // An array for all the boids
-    this.boids = []; // Initialize the array
+  this.boids = []; // Initialize the array
 
   this.run = function(desiredSeperation, neighbordist, desiredCohesion) {
     for (var i = 0; i < this.boids.length; i++) {
