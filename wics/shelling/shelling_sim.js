@@ -19,7 +19,7 @@ var shelling_sim = function(s) {
         canvas.parent(canvasDiv);
         //sketchDiv.style('width: ${canvasWidth}')
 
-        w = 5;
+        w = 10;
         // Calculate columns and rows
         columns = s.floor(s.width / w);
         rows = s.floor(s.height / w);
