@@ -80,10 +80,10 @@ var sketch_flock = function(s) {
         var caption = s.select('.caption');
         caption.style(`width: ${canvasWidth}`);
 
-        s.initilizeFlockSim();
+        s.initializeFlockSim();
     }
 
-    s.initilizeFlockSim = function() {
+    s.initializeFlockSim = function() {
         flock = new s.Flock();
         // Add an initial set of boids into the system
         for (var i = 0; i < populationTxtBox.value(); i++) {
@@ -95,15 +95,15 @@ var sketch_flock = function(s) {
 
     s.draw = function() {
         s.background(100);
-        reRunButton.mousePressed(s.initilizeFlockSim);
-        populationSlider.input(populationSliderEvent);
-        populationTxtBox.input(populationTextBoxEvent);
-        seperationTxtBox.input(seperationTxtBoxEvent);
-        seperationSlider.input(seperationSliderEvent);
-        cohesionSlider.input(cohesionSliderEvent);
-        cohesionTxtBox.input(cohesionTxtBoxEvent);
-        alignSlider.input(alignSliderEvent);
-        alignTxtBox.input(alignTxtBoxEvent);
+        reRunButton.mousePressed(s.initializeFlockSim);
+        populationSlider.input(s.populationSliderEvent);
+        populationTxtBox.input(s.populationTextBoxEvent);
+        seperationTxtBox.input(s.seperationTxtBoxEvent);
+        seperationSlider.input(s.seperationSliderEvent);
+        cohesionSlider.input(s.cohesionSliderEvent);
+        cohesionTxtBox.input(s.cohesionTxtBoxEvent);
+        alignSlider.input(s.alignSliderEvent);
+        alignTxtBox.input(s.alignTxtBoxEvent);
 
         desiredSeperation = seperationTxtBox.value();
         neighbordist = alignTxtBox.value();
@@ -293,6 +293,45 @@ var sketch_flock = function(s) {
             }
         };
     }
+
+    s.cohesionTxtBoxEvent = function() {
+        cohesionSlider.value(cohesionTxtBox.value())
+    }
+
+    s.cohesionSliderEvent = function() {
+        cohesionTxtBox.value(cohesionSlider.value())
+    }
+
+    s.alignSliderEvent = function() {
+        alignTxtBox.value(alignSlider.value())
+    }
+
+    s.alignTxtBoxEvent = function() {
+        alignSlider.value(alignTxtBox.value())
+    }
+
+    s.seperationTxtBoxEvent = function() {
+        seperationSlider.value(seperationTxtBox.value())
+    }
+
+    s.seperationSliderEvent = function() {
+        seperationTxtBox.value(seperationSlider.value())
+    }
+
+    s.populationSliderEvent = function() {
+        populationTxtBox.value(populationSlider.value())
+        s.initializeFlockSim()
+    }
+
+    s.populationTextBoxEvent = function() {
+        if (populationTxtBox.value() > 150) {
+            populationTxtBox.value(150)
+        }
+
+        populationSlider.value(populationTxtBox.value())
+        s.initializeFlockSim()
+    }
+
 
 }
 
