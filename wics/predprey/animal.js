@@ -37,13 +37,15 @@ var pred_prey = function(s) {
     }
 
     s.draw = function() {
-        s.background(255);
-        s.generate();
+        // s.background(34,139,34);
+        // s.generate();
         for (var i = 0; i < columns; i++) {
             for (var j = 0; j < rows; j++) {
-                if ((board[i][j] == 1)) s.fill(0);
-                else s.fill(255);
-                s.stroke(0);
+
+                // if ((board[i][j] == 1)) s.fill(34,139,34);
+                // else s.fill(255);
+                s.fill(34,139,34)
+                // s.stroke(255);
                 s.rect(i * w, j * w, w - 1, w - 1);
             }
         }
@@ -68,37 +70,41 @@ var pred_prey = function(s) {
         }
     }
 
-    // The process of creating the new generation
-    s.generate = function() {
+    s.sheep = function() {
 
-        // Loop through every spot in our 2D array and check spots neighbors
-        for (var x = 1; x < columns - 1; x++) {
-            for (var y = 1; y < rows - 1; y++) {
-                // Add up all the states in a 3x3 surrounding grid
-                var neighbors = 0;
-                for (var i = -1; i <= 1; i++) {
-                    for (var j = -1; j <= 1; j++) {
-                        neighbors += board[x + i][y + j];
-                    }
-                }
-
-                // A little trick to subtract the current cell's state since
-                // we added it in the above loop
-                neighbors -= board[x][y];
-                // Rules of Life
-                if ((board[x][y] == 1) && (neighbors < 2)) next[x][y] = 0; // Loneliness
-                else if ((board[x][y] == 1) && (neighbors > 3)) next[x][y] = 0; // Overpopulation
-                else if ((board[x][y] == 0) && (neighbors == 3)) next[x][y] = 1; // Reproduction
-                else next[x][y] = board[x][y]; // Stasis
-            }
-        }
-
-        // Swap!
-        var temp = board;
-        board = next;
-        next = temp;
     }
 
-}
+    // The process of creating the new generation
+    // s.generate = function() {
+
+        // // Loop through every spot in our 2D array and check spots neighbors
+        // for (var x = 1; x < columns - 1; x++) {
+        //     for (var y = 1; y < rows - 1; y++) {
+        //         // Add up all the states in a 3x3 surrounding grid
+        //         var neighbors = 0;
+        //         for (var i = -1; i <= 1; i++) {
+        //             for (var j = -1; j <= 1; j++) {
+        //                 neighbors += board[x + i][y + j];
+        //             }
+        //         }
+        //
+        //         // A little trick to subtract the current cell's state since
+        //         // we added it in the above loop
+        //         neighbors -= board[x][y];
+        //         // Rules of Life
+        //         if ((board[x][y] == 1) && (neighbors < 2)) next[x][y] = 0; // Loneliness
+        //         else if ((board[x][y] == 1) && (neighbors > 3)) next[x][y] = 0; // Overpopulation
+        //         else if ((board[x][y] == 0) && (neighbors == 3)) next[x][y] = 1; // Reproduction
+        //         else next[x][y] = board[x][y]; // Stasis
+        //     }
+        // }
+        //
+        // // Swap!
+        // var temp = board;
+        // board = next;
+        // next = temp;
+    }
+
+// }
 
 var myp5 = new p5(pred_prey);
