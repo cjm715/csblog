@@ -1,44 +1,183 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+    <!-- uncomment lines below to include extra p5 libraries -->
+    <script language="javascript" src="libraries/p5.dom.js"></script>
+    <script language="javascript" type="text/javascript" src="flock_sim.js"></script>
+    <script language="javascript" type="text/javascript" src="shelling/shelling_sim.js"></script>
+
+    <!-- shelling model scripts go here -->
 
 
-	<meta charset="UTF-8">
-	<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
-	<!-- uncomment lines below to include extra p5 libraries -->
-	<script language="javascript" src="libraries/p5.dom.js"></script>
-	<!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
-	<!-- <script language="javascript" type="text/javascript" src="sketch.js"></script> -->
+    <!-- predator-prey model scripts go here -->
+    <script language="javascript" type="text/javascript" src="predprey/animal.js"></script>
 
-	<!--Enabling MathJax-->
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-	</script>
-	<script type="text/javascript" async src="/libraries/MathJax-2.6-latest/MathJax.js?config=TeX-AMS_CHTML">
-	</script>
+    <!--Enabling MathJax-->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="libraries/MathJax-2.6-latest/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
 
+    <!-- this line removes any default padding and style. you might only need one of these values set. -->
+    <!--<style>
 
-	<title>Complex Systems</title>
-	<!-- link to main stylesheet -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+  body { padding: 10pt;
+    margin: 40px;
+  }
+
+  h1 {
+    background-color: purple;
+    color: white ;
+  }
+
+  p {
+    color:green
+  }
+</style>-->
+    <link rel="stylesheet" href="Computer Modern/Serif/cmun-serif.css">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
 </head>
 
 <body>
+    <a href="../index.html"> Home </a>
+
+    <h1> What exactly <i>is</i>  complex systems science? </h1>
+    <div style="position: relative">
+        <span style='font-size: 14pt'><b>Uriah Israel</b> </span>
+        <span style='font-size: 12pt; right: 0; position: absolute'><i>ulisrael@umich.edu  </i></span>
+        <div></div>
+        <span style='font-size: 14pt'><b>Chris Miles </b></span>
+        <span style='font-size: 12pt; right: 0; position: absolute'><i>cmiless@umich.edu </i></span>
+    </div>
+    <div style='font-size: 14pt'><i>Center for the Study of Complex Systems, U. of Michigan, Ann Arbor, MI 48109-1107 </i></div>
+
+    <p></p>
+    <h2>Introduction
+    </h2>
+
+    <p>
+        As a 5th year physics graduate student working at the Center for the Study of Complex Systems, I am frequently asked, "What is complex systems?" This is a great question and it may seem unsatisfactory but many complex systems researchers would provide
+        you with a wide range of descriptions --- There is definitely not one agreed upon definition. In fact, Melanie Mitchell(a UM Alumna) in her online Course, Introduction to Complexity, interviews and asks 10 complexity scientists this exact question.
+        They all give a variety of answers.
+    </p>
+
+    <p>
+        I'll give my own take. <i> A complex systems science seeks to understand systems with many individual parts which collectively interact to produce emergent patterns seen across the entire system.</i> This is admittedly a bit abstract description
+        and honestly, I think its not worth fussing over a clear iron-clad dictionary definition. Complex systems is not the only scientific field that has identity struggles. For instance, the concept of "Life" is ill-defined, but the field that studies
+        this concept, Biology, proceeds undetered from this fact and continues as a well-established and productive discipline.
+    </p>
+
+    <p>
+        I think what is more fruitful is to show few examples of complex systems to better understand the field. Examples come from many different topics such as statistical physics, flocking, ecology, evolutionary biology, computational complexity, information
+        theory, game theory, financial markets, and many others. Here, I will only focus on 3 examples for the sake of brevity. I think this field is naturaly computational and I will share examples with you directly on this page. Ones which can be interacted
+        with --- by poking, dragging, and manipulating this systems in real-time. I'd like to ackowledge that many of the simulations here have been learned through the magnificent teaching of Daniel Schiffman through his book and online youtube tutorial
+        series titled "The Nature of Code". I highly recommend this tutorial for those interested in making similar simulations on their own. I think an interactive component can also help the reader make more sense of these systems.
+    </p>
+
+    <h2>Flocking
+    </h2>
+
+    <div id="sketch-holder">
+        <div id='canvasDiv'>
+        </div>
+        <div id="controlsDiv">
+            <table>
+                <tr>
+                    <td>
+                        <div id='population' class="controlRow">Population</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='seperation' class="controlRow"> Seperation </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div id='cohesion' class="controlRow"> Cohesion </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='alignment' class="controlRow"> Alignment </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='button' class="controlRow"> </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class="caption">
+            Figure 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare
+            massa mauris ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut.
+        </p>
+    </div>
 
 
-	<div class="blurb">
-		<a href="index.html"> Home </a>
-		<h1>Complex Systems Web-book</h1>
+    <p>
+        We begin our exploration by considering a now canonical example of flocking. Click on the empty square below to generate a collection of birds.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a erat non augue vulputate aliquam. Nullam non felis id velit convallis dapibus eu quis risus. Nulla egestas, erat vel hendrerit sagittis, erat urna viverra libero, id ornare massa mauris
+        ac quam. Sed tincidunt pretium lacus, eu hendrerit velit laoreet ut. Morbi mattis vestibulum leo eget imperdiet. Donec id condimentum magna. Nulla cursus facilisis erat. Sed id nulla non tortor venenatis blandit eget sed metus. Vivamus mollis
+        mollis nulla, eu mattis neque tristique a. Nunc risus metus, pharetra nec mollis nec, lacinia vel enim. Cras ut felis nunc. Curabitur felis felis, lobortis in elementum quis, adipiscing in velit.
+    </p>
+    <h2>
+        Shelling Segregation model
+    </h2>
+
+        $\int f(x)dx = \|\theta\|_{2}^{2}$
+        $$
+	\mathcal{L} = \frac{1}{2}\int_{D}d^{d}x |\nabla\Delta^{-1} \theta(x,T)|^{2}
+	+ \int_{D} d^{d}x \int dt \left\{ \phi(\partial_{t}\theta+\mathbf{u}\cdot\nabla \theta ) +\frac{\mu}{2} (|\mathbf{u}|^{2}-U^{2}) + p(\nabla\cdot \mathbf{u})
+	\right \} .
+    $$
+
+    <div id="sketch-holder-shelling">
+        <div id="canvasDiv-shelling">
+        </div>
+    </div>
+
+    <h2>
+        Predator-Prey model -- time to start!!
+    </h2>
+    <div id="sketch-holder-pp">
+        <div id="canvasDiv-pp">
+        </div>
+    </div>
+    <h2> Summary </h2>
+    <h2> Acknowledgements </h2>
+    <h2> References  </h2>
 
 
-
-
-		<p>Hi there, welcome to our web-book on complex systems science. What is a web-book? It's an interactive textbook on the web. Click on a chapter below to get started on learning complex systems science.</p>
-
-		<a href="wics/index.html">CHP 0: What is complex systems?</a>
-	</div>
-	<!-- /.blurb -->
 </body>
 
 </html>
