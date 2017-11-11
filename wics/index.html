@@ -6,6 +6,7 @@
     <!-- uncomment lines below to include extra p5 libraries -->
     <script language="javascript" src="../libraries/p5.dom.js"></script>
     <script language="javascript" type="text/javascript" src="flock_sim.js"></script>
+    <script language="javascript" type="text/javascript" src="shelling/shelling_sim.js"></script>
 
     <!-- shelling model scripts go here -->
 
@@ -151,6 +152,7 @@
     </p>
     <h2>
         Shelling Segregation model
+    </h2>
 
         $\int f(x)dx = \|\theta\|_{2}^{2}$
         $$
@@ -159,11 +161,21 @@
 	\right \} .
     $$
 
+    <div id="sketch-holder-shelling">
+        <div id="canvasDiv-shelling">
+        </div>
+    </div>
 
-    </h2>
     <h2>
         Predator-Prey model -- time to start!!
     </h2>
+    <p>
+    The simplest type of preditor-prey system consists of just two species {cite "the computational beauty of nature"}. Vito Volterra and Alfred J. Lotka independently noticed the cyclic nature of popluation dynamics and described it mathematically. The Lotka-Volterra system consists of two differential equations, one for each species.
+
+    $$ \frac{dF}{dt} = F(a-bS) \hspace{.5cm} \text{and} \hspace{.5cm} \frac{dS}{dt} = S(cF -d) $$
+
+    
+    </p>
     <div id="sketch-holder-pp">
         <div id="canvasDiv-pp">
         </div>
