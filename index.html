@@ -80,8 +80,23 @@
         - Segregation
         - percelation
         - etc..
-    - These may be explored in future articles, today's focus is Flocking
-        - Reynolds first introduced ....
+
+    -->
+
+    <p>
+    We will now discuss flocking to illustrate the features of a complex system. This is now a canonical complex system. Craig Reynolds (1987) produced perhaps the first-widely known simulation of flocking. The model used three simple rules: seperation, cohesion, and alighnment. These rules were similar to those used in a earlier simulation done by Aoki (1982) for modeling fish schools. A quantitative study of flocking was introduced by Vicsek (1995) using methods from statistical physics. The model studied in Vicsek's 1995 paper is know widely known as the "Vicsek Model".
+    </p>
+
+    <p>
+    The Vicsek Model is described by the following rules:
+    $$\theta_{i} (t + \Delta t) =  \langle \theta \rangle_{ |r_{i}-r_{j}| < r } + \eta_{i}(t)$$
+
+    $$ \mathbf{r}_{i} (t + \Delta t) = \mathbf{r}_{i} (t) + v \Delta t \begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix} $$
+    </p>
+
+
+
+ <!--
         - discription of interactive figure
             - things to explore...what parameters result in certain behavoirs
             - zero out params one at a time and examine behavior
