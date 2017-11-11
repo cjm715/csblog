@@ -123,6 +123,7 @@ var sketch_flock = function(s) {
             }
         };
 
+
         this.addBoid = function(b) {
             this.boids.push(b);
         };
