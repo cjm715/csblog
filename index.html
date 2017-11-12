@@ -104,19 +104,26 @@
     <h2>Flocking
     </h2>
     <p>
-    We will now discuss flocking to illustrate the features of a complex system. This is now a canonical complex system. Craig Reynolds (1987) produced perhaps the first-widely known simulation of flocking. The model used three simple rules: seperation, cohesion, and alighnment. These rules were similar to those used in a earlier simulation done by Aoki (1982) for modeling fish schools. A quantitative study of flocking was introduced by Vicsek (1995) using methods from statistical physics. The model studied in Vicsek's 1995 paper is know widely known as the "Vicsek Model".
+    We will now discuss flocking to illustrate the features of a complex system. This is now a canonical complex system. Craig Reynolds (1987) produced perhaps the first-widely known simulation of flocking. The model used three simple rules: seperation, cohesion, and alighnment. These rules were similar to those used in a earlier simulation done by Aoki (1982) for modeling fish schools. A quantitative study of flocking was introduced by Vicsek (1995) using methods from statistical physics. The model studied in Vicsek's 1995 paper is know widely known as the "Vicsek model".
     </p>
 
     <p>
-    The Vicsek Model is described by the following rules:
+    The Vicsek model is described by the following rules:
     $$\theta_{i} (t + \Delta t) =  \langle \theta \rangle_{ |r_{i}-r_{j}| < r } + \eta_{i}(t)$$
-
     $$ \mathbf{r}_{i} (t + \Delta t) = \mathbf{r}_{i} (t) + v \Delta t \begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix} $$
-    where $\theta$ is the orientation, $\mathbf{r}_{i}$ is the position of the $i$th bird (or particle),  $\Delta t$ is the time step between updates, $\eta_{i}(t)$ is a noise term, and  $\langle \theta \rangle_{ |r_{i}-r_{j}| < r }$ is the average $\theta$ of all neighboring birds within a radius $r$.
+    where $\theta$ is the orientation,   $\langle \theta \rangle_{ |r_{i}-r_{j}| < r }$ is the average $\theta$ of all neighboring birds within a radius $r$, $\eta_{i}(t)$ is a noise term,
+    $\mathbf{r}_{i}$ is the position of the $i$th bird (or particle),  $\Delta t$ is the time step between updates, and $v$ is the speed of an individual bird.
     </p>
 
     <p>
-    It is useful to specify an <i>order parameter</i> for complex systems. An
+    It is useful to specify an order parameter for complex systems that undergo phase transitions. An <i>order parameter</i> is a macroscopic quantity that is an indicator of order and current phase of the system. Typically there are two phases, a disordered vs ordered phase so an order parameter may take the value 0 say for the disordered system and 1 for the ordered system. The values inbetween 0 and 1 may represent a system in transition or in a 'hybrid' state.
+</p>
+<p>
+
+    For the Vicsek model, the order paramter $ \varphi $ is
+    $$ \varphi =  \frac{1}{N v} \sum_{i=1}^{N}\mathbf{v}_{i}$$
+    where $N$ is the number of birds and $\mathbf{v}_{i} = v\begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix}$ is the velocity of an individual bird.
+
     </p>
 
 
