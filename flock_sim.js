@@ -29,7 +29,7 @@ var sketch_flock = function(s) {
     var canvas;
 
     s.setup = function() {
-        var canvasWidth = 360;
+        var canvasWidth = 320;
         var canvasHeight = 360;
 
         var canvasDiv = s.select('#canvasDiv')
@@ -77,7 +77,7 @@ var sketch_flock = function(s) {
         reRunButton = s.createButton('Rerun');
         reRunButton.parent('#button')
 
-        var caption = s.select('.caption');
+        var caption = s.select('#caption');
         caption.style(`width: ${canvasWidth}`);
 
         s.initializeFlockSim();
@@ -87,7 +87,7 @@ var sketch_flock = function(s) {
         flock = new s.Flock();
         // Add an initial set of boids into the system
         for (var i = 0; i < populationTxtBox.value(); i++) {
-            var b = new s.Boid(s.width / 2, s.height / 2);
+            var b = new s.Boid(s.random(s.width),s.random(s.height));
             flock.addBoid(b);
         }
     }

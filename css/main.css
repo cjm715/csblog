@@ -24,11 +24,11 @@ a:hover {
     text-decoration: underline;
 }
 h1 {
-    font-size: 3em;
+    font-size: 4em;
     font-family:'Computer Modern Serif';
 }
 p {
-    font-size: 1.5em;
+    font-size: 1.4em;
     line-height: 1.4em;
     color: #333;
     text-align: justify;
@@ -51,6 +51,14 @@ ul.posts li {
 #sketch-holder{
     position: relative;
     float: left;
+    margin-right: 25px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+#sketch-holder-vicsek{
+    position: relative;
+    float: right;
     margin-right: 25px;
     margin-bottom: 0px;
     margin-top: 5px;

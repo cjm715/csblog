@@ -6,13 +6,9 @@
     <!-- uncomment lines below to include extra p5 libraries -->
     <script language="javascript" src="libraries/p5.dom.js"></script>
     <script language="javascript" type="text/javascript" src="flock_sim.js"></script>
-    <script language="javascript" type="text/javascript" src="shelling/shelling_sim.js"></script>
 
-    <!-- shelling model scripts go here -->
+    <script language="javascript" type="text/javascript" src="flock_sim_vicsek.js"></script>
 
-
-    <!-- predator-prey model scripts go here -->
-    <script language="javascript" type="text/javascript" src="predprey/animal.js"></script>
 
     <!--Enabling MathJax-->
     <script type="text/x-mathjax-config">
@@ -44,7 +40,6 @@
 </head>
 
 <body>
-    <a href="../index.html"> Home </a>
 
     <h1> What <i>is</i> a complex system? </h1>
     <div style="position: relative">
@@ -70,18 +65,18 @@
 	<p></p>
 	<h2> Common Characteristics of Complex System </h2>
 	<p>
-	    An exact definition of a complex system does not exist. This is due to the numerous disciplines the study covers. Here at the UM, CSCS core faculty spans sociology, physics, math, political science, economics, engineering, school of information, and public policy. The list grows even larger when you include affiliated faculty members. That being said, there are some common characteristics of complex system that exist among these various areas of study. Here is a list of common features and their descriptions:
-	    <ul>
-	      <li><p> <b>Non-Linearity:</b>
-	          A system exhibits <i>non-linearity</i> when it's behavior can not be fully understood by inspecting it's individual parts alone. A change on the component level doesn't result in a proportional change on the system level.
-	      </p></li>
-	      <li><p><b>Phase Transitions</b>
-	          The <i>phase</i> of the system is a labeling of a collection of system configurations that share similar global characteristics. A <i>phase transition</i> occurs when properties of the system change their behavior. For example, when condensation occurs and a gas (a phase) turns into a liquid (a phase) a phase transition has occurred. Phase transitions can occur suddenly based on a small changes on the component level. This happens when the system is close to a <i> tipping point</i>.
-	      </p></li>
-	      <li><p><b>Self Organization:</b>
-	          <i>Self organization</i> is a process linked to emergence (mentioned earlier). A process is said to be self organization when order emerges from a previously disordered system without any external control. This process happens spontaneously and sometimes unpredictable (think chaos theory). A particular type of self organization, that is of high interest in complex systems is <i>collective behavior</i>. This is when the individual components collaborate to instill some structure. Collective behavior exist in a wide context, organelles in a cell cooperate to achieve desired functionality just like a groups of peoples work together to meet some desired goal.
-	      </p></li>
-	    </ul>
+		An exact definition of a complex system does not exist. This is due to the numerous disciplines the study covers. Here at the UM, CSCS core faculty spans sociology, physics, math, political science, economics, engineering, school of information, and public policy. The list grows even larger when you include affiliated faculty members. That being said, there are some common characteristics of complex system that exist among these various areas of study. Here is a list of common features and their descriptions:
+		<ul>
+		  <li><p> <b>Non-Linearity:</b>
+			  A sytem exhibits <i>non-linearity</i> when it's behavior can not be fully understood by inspecting it's individual parts alone. Another way of stating this is that a change on the component level doesn't result in a proportional change on the system level.
+		  </p></li>
+		  <li><p><b>Phase Transitions</b>
+			  The <i>phase</i> of the system describes a setting in which properties that parameterize the system have some uniform characteristics. A <i>phase transiton</i> occurs when properties of the system change their behavior. For example, when condensation occurs and a gas (a phase) turns into a liquid (a phase) a phase transiton has occured. Phase transitions can occur suddenly based on a small changes on the component level. This happens when the system is close to a <i> tipping point</i>.
+		  </p></li>
+		  <li><p><b>Self Organization:</b>
+			  <i>Self organization</i> is a process linked to emergence (mentioned earlier). A process is said to be self organization when order emerges from a previously disordered sytem without any external control. This process happens spontaneously and sometimes unpredictiable (think chaos theory). A particular type of self organization, that is of high interest in complex systems is <i>collective behavior</i>. This is when the individual components collaborate to instill some structure. Collective behavior exist in a wide context, organels in a cell coopoerate to achive desired functionality just like a groups of peoples work together to meet some desired goal.
+		  </p></li>
+		</ul>
 	</p>
     <!-- -motivation
         - As members common question ...
@@ -103,44 +98,8 @@
     <h2>Flocking
     </h2>
     <p>
-    We will now discuss flocking to illustrate the features of a complex system. This is now a canonical complex system. Craig Reynolds (1987) produced perhaps the first-widely known simulation of flocking. The model used three simple rules: seperation, cohesion, and alighnment. These rules were similar to those used in a earlier simulation done by Aoki (1982) for modeling fish schools. A quantitative study of flocking was introduced by Vicsek (1995) using methods from statistical physics. The model studied in Vicsek's 1995 paper is know widely known as the "Vicsek model".
+    We will now discuss flocking to illustrate the features of a complex system. This is now a canonical complex system. Craig Reynolds (1987) produced perhaps the first-widely known simulation of flocking. The model used three simple rules: seperation, cohesion, and alignment. These rules were similar to those used in a earlier simulation done by Aoki (1982) for modeling fish schools. A quantitative study of flocking was introduced by Tamas Vicsek (1995) using methods from statistical physics. The model studied in Vicsek's 1995 paper is know widely known as the "Vicsek model". We will discuss the Craig Reynold's model and Vicsek's model here.
     </p>
-
-    <p>
-    The Vicsek model is described by the following update rules:
-    $$\theta_{i} (t + \Delta t) =  \langle \theta \rangle_{ |r_{i}-r_{j}| < r } + \eta_{i}(t)$$
-    $$ \mathbf{r}_{i} (t + \Delta t) = \mathbf{r}_{i} (t) + v \Delta t \begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix} $$
-    where $\theta$ is the orientation,   $\langle \theta \rangle_{ |r_{i}-r_{j}| < r }$ is the average $\theta$ of all neighboring birds within a radius $r$, $\eta_{i}(t)$ is a noise term,
-    $\mathbf{r}_{i}$ is the position of the $i$th bird (or particle),  $\Delta t$ is the time step between updates, and $v$ is the speed of an individual bird.
-    </p>
-
-    <p>
-    It is useful to specify an order parameter for complex systems that undergo phase transitions. An <i>order parameter</i> is a macroscopic quantity that is an indicator of order of the system. Typically there are two phases, a disordered and ordered phase. An order parameter may take the value 0 say for the disordered system and 1 for the ordered system. The values inbetween 0 and 1 may represent a system in transition or in a 'hybrid' state.
-</p>
-<p>
-
-    For the Vicsek model, the order paramter $ \varphi $ is
-    $$ \varphi =  \frac{1}{v N} \sum_{i=1}^{N}\mathbf{v}_{i}$$
-    where $N$ is the number of birds and $\mathbf{v}_{i} = v\begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix}$ is the velocity of an individual bird. The order parameter is simply the ratio of the group speed divided by the indiviudal speed. This order paramter indicates if the flock is disordered ($\varphi = 0$) or ordered ($\varphi \sim 1$) when the birds are flying in the same general direction as a whole.
-    </p>
-
-    <p>
-
-    </p>
-
- <!--
-        - discription of interactive figure
-            - things to explore...what parameters result in certain behavoirs
-            - zero out params one at a time and examine behavior
-        - more detailed Vicsek model (has connections to active matter)
-    - conclusion
-        -
-
-    - Credit Schiffman -->
-
-    <h2> Simulation </h2>
-    Below we implimented a
-
 
     <div id="sketch-holder">
         <div id='canvasDiv'>
@@ -175,12 +134,92 @@
                 </tr>
             </table>
         </div>
-        <p class="caption">
+        <p class="caption" id = 'caption'>
             Figure 1: Play with the parameters above to explore the model. Notice which parameters
             lead to the ordered flocking phase.
         </p>
     </div>
+    <h2>Craig Reynold's Boids
+    </h2>
+    <p>
+    Craig Reynold's Boid simulations can be summarised by the three simple local rules:
+    </p>
+    <ul>
+      <li><p><b>Seperation</b>: Avoid collisions with your neighbors </p></li>
+      <li><p><b>Cohesion</b>: Although keep close to your neighbors. </p></li>
+      <li><p><b>Alignment</b>: Move in the general direction as your neighbors.</p></li>
+    </ul>
+    <p>
+    These rules are implimented by the following update scheme:
+    $$ \mathbf{v}_{desired} = \mathbf{v}_{seperation} + \mathbf{v}_{cohesion} +  \mathbf{v}_{alignment}$$
+    $$ \mathbf{r}_{i} (t + \Delta t) = \mathbf{r}_{i} (t) + \Delta t v_{desired} $$
 
+    </p>
+    <h2>The Vicsek model
+    </h2>
+
+
+    <p>
+    The Vicsek model is described by the following update rules:
+    $$\theta_{i} (t + \Delta t) =  \langle \theta \rangle_{ |r_{i}-r_{j}| < r } + \eta_{i}(t)$$
+    $$ \mathbf{r}_{i} (t + \Delta t) = \mathbf{r}_{i} (t) + v \Delta t \begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix} $$
+    where $\theta$ is the orientation,   $\langle \theta \rangle_{ |r_{i}-r_{j}| < r }$ is the average $\theta$ of all neighboring birds within a radius $r$, $\eta_{i}(t)$ is a noise term,
+    $\mathbf{r}_{i}$ is the position of the $i$th bird (or particle),  $\Delta t$ is the time step between updates, and $v$ is the speed of an individual bird.
+    </p>
+
+    <p>
+    It is useful to specify an order parameter for complex systems that undergo phase transitions. An <i>order parameter</i> is a macroscopic quantity that is an indicator of order of the system. Typically there are two phases, a disordered and ordered phase. An order parameter may take the value 0 say for the disordered system and 1 for the ordered system. The values inbetween 0 and 1 may represent a system in transition or in a 'hybrid' state.
+</p>
+<p>
+
+    For the Vicsek model, the order paramter $ \varphi $ is
+    $$ \varphi =  \frac{1}{v N} \sum_{i=1}^{N}\mathbf{v}_{i}$$
+    where $N$ is the number of birds and $\mathbf{v}_{i} = v\begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix}$ is the velocity of an individual bird. The order parameter is simply the ratio of the group speed divided by the indiviudal speed. This order paramter indicates if the flock is disordered ($\varphi = 0$) or ordered ($\varphi \sim 1$) when the birds are flying in the same general direction as a whole.
+    </p>
+
+
+    <div id="sketch-holder-vicsek">
+        <div id='canvasDiv-vicsek'>
+        </div>
+        <div id="controlsDiv-vicsek">
+            <table>
+                <tr>
+                    <td>
+                        <div id='population-vicsek' class="controlRow">Population</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='speed-vicsek' class="controlRow"> Speed </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='noise-vicsek' class="controlRow"> Noise </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='button-vicsek' class="controlRow"> </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p class="caption" id = 'caption-vicsek'>
+            Figure 2 (Vicsek Model): Play with the parameters above to explore the model. Notice which parameters
+            lead to the ordered flocking phase.
+        </p>
+    </div>
+
+ <!--
+        - discription of interactive figure
+            - things to explore...what parameters result in certain behavoirs
+            - zero out params one at a time and examine behavior
+        - more detailed Vicsek model (has connections to active matter)
+    - conclusion
+        -
+
+    - Credit Schiffman -->
 
 
 
