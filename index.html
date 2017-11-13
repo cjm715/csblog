@@ -161,10 +161,15 @@
 
     <p>
     The Vicsek model is described by the following update rules:
-    $$\theta_{i} (t + \Delta t) =  \langle \theta \rangle_{ |r_{i}-r_{j}| < r } + \eta_{i}(t)$$
-    $$ \mathbf{r}_{i} (t + \Delta t) = \mathbf{r}_{i} (t) + v \Delta t \begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix} $$
-    where $\theta$ is the orientation,   $\langle \theta \rangle_{ |r_{i}-r_{j}| < r }$ is the average $\theta$ of all neighboring birds within a radius $r$, $\eta_{i}(t)$ is a noise term,
-    $\mathbf{r}_{i}$ is the position of the $i$th bird (or particle),  $\Delta t$ is the time step between updates, and $v$ is the speed of an individual bird.
+    $$\theta_{i} (t + \Delta t) =  \langle \theta \rangle_{ |r_{i}-r_{j}| < r } +
+    \Delta \theta_{i}(t)$$
+    $$ \mathbf{x}_{i} (t + \Delta t) = \mathbf{x}_{i} (t) +
+    v \Delta t \begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix} $$
+    where $\theta$ is the orientation,   $\langle \theta \rangle_{ |r_{i}-r_{j}| < r }$
+    is the average $\theta$ of all neighboring birds within a radius $r$
+    (specifically, $\langle \theta \rangle_{ |r_{i}-r_{j}| < r } =\arctan \left(\frac{\langle \sin \theta \rangle_{ |r_{i}-r_{j}| < r } }{\langle \cos \theta \rangle_{ |r_{i}-r_{j}| < r }}\right)  $),
+    $\Delta \theta_{i}(t)$ is a random number drawn uniformly from the interval $[-\eta/2,\eta/2]$,
+    $\mathbf{x}_{i}$ is the position of the $i$th bird (or particle), $v$ is the speed of an individual bird, and $\Delta t$ is the time step between updates.
     </p>
 
     <p>
@@ -178,17 +183,17 @@
         <table>
             <tr>
                 <td>
-                    <div id='population-vicsek' class="controlRow">Population</div>
+                    <div id='population-vicsek' class="controlRow">Population $N$</div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div id='speed-vicsek' class="controlRow"> Speed </div>
+                    <div id='speed-vicsek' class="controlRow"> Speed $v$ </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div id='noise-vicsek' class="controlRow"> Noise </div>
+                    <div id='noise-vicsek' class="controlRow"> Noise $\eta$ </div>
                 </td>
             </tr>
             <tr>
@@ -248,8 +253,15 @@
     <div class = 'ref' >
     [3] Vicsek, T., Czirók, A., Ben-Jacob, E., Cohen, I., & Shochet, O. (1995). Novel type of phase transition in a system of self-driven particles. Physical review letters, 75(6), 1226.
     </div>
+    <div class = 'ref' >
+    [4] Shiffman, D.,  <a href="http://natureofcode.com/">Nature of Code</a>: Flocking , original source: <a href="https://p5js.org/examples/simulate-flocking.html"> P5.js | examples | Flocking</a>, <a href ="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative Commons License 4.0
+    </div>
 
 
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
 </body>
 
