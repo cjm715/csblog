@@ -66,17 +66,17 @@
 	<h2> Common Characteristics of Complex System </h2>
 	<p>
 		An exact definition of a complex system does not exist. This is due to the numerous disciplines the study covers. Here at the UM, CSCS core faculty spans sociology, physics, math, political science, economics, engineering, school of information, and public policy. The list grows even larger when you include affiliated faculty members. That being said, there are some common characteristics of complex system that exist among these various areas of study. Here is a list of common features and their descriptions:
-        <ul>
-          <li><p> <b>Non-Linearity:</b>
-              A system exhibits <i>non-linearity</i> when it's behavior can not be fully understood by inspecting it's individual parts alone. A result of non-linearity is that a change on the component level doesn't result in a proportional change on the system level.
-          </p></li>
-          <li><p><b>Phase Transitions</b>
-              The <i>phase</i> of the system describes a set of configurations whose properties share similar characteristics. A <i>phase transition</i> occurs when properties of the system change their behavior. For example, when condensation occurs and a gas (a phase) turns into a liquid (a phase) a phase transition has occurred. Phase transitions can occur suddenly based on a small changes on the component level. This happens when the system is close to a <i> tipping point</i>.
-          </p></li>
-          <li><p><b>Self-Organization:</b>
-              <i>Self-organization</i> is a process linked to emergence (mentioned earlier). A process is said to be self organization when order emerges from a previously disordered system without any external control. This process happens spontaneously and sometimes unpredictable (think chaos theory). A particular type of self organization, that is of high interest in complex systems is <i>collective behavior</i>. This is when the individual components collaborate to instill some structure. Collective behavior exist in a wide context, organelles in a cell cooperate to achieve desired functionality just like a groups of peoples work together to meet some desired goal.
-          </p></li>
-        </ul>
+		<ul>
+		  <li><p> <b>Non-Linearity:</b>
+			  A sytem exhibits <i>non-linearity</i> when it's behavior can not be fully understood by inspecting it's individual parts alone. Another way of stating this is that a change on the component level doesn't result in a proportional change on the system level.
+		  </p></li>
+		  <li><p><b>Phase Transitions</b>
+			  The <i>phase</i> of the system describes a setting in which properties that parameterize the system have some uniform characteristics. A <i>phase transiton</i> occurs when properties of the system change their behavior. For example, when condensation occurs and a gas (a phase) turns into a liquid (a phase) a phase transiton has occured. Phase transitions can occur suddenly based on a small changes on the component level. This happens when the system is close to a <i> tipping point</i>.
+		  </p></li>
+		  <li><p><b>Self Organization:</b>
+			  <i>Self organization</i> is a process linked to emergence (mentioned earlier). A process is said to be self organization when order emerges from a previously disordered sytem without any external control. This process happens spontaneously and sometimes unpredictiable (think chaos theory). A particular type of self organization, that is of high interest in complex systems is <i>collective behavior</i>. This is when the individual components collaborate to instill some structure. Collective behavior exist in a wide context, organels in a cell coopoerate to achive desired functionality just like a groups of peoples work together to meet some desired goal.
+		  </p></li>
+		</ul>
 	</p>
     <!-- -motivation
         - As members common question ...
@@ -136,7 +136,7 @@
         </div>
         <p class="caption" id = 'caption'>
             Simulation 1 (Craig Reynold's Boids Model): Play with the parameters above to explore the model. Notice which parameters
-            lead to the ordered flocking phase.
+            lead to the ordered flocking phase. (Code is modified from [4])
         </p>
     </div>
     <h2>Craig Reynold's Boids
@@ -160,16 +160,15 @@
 
 
     <p>
-    The Vicsek model is described by the following update rules:
+    The Vicsek model [3] is described by the following update rules:
     $$\theta_{i} (t + \Delta t) =  \langle \theta \rangle_{ |r_{i}-r_{j}| < r } +
     \Delta \theta_{i}(t)$$
     $$ \mathbf{x}_{i} (t + \Delta t) = \mathbf{x}_{i} (t) +
     v \Delta t \begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix} $$
-    where $\theta$ is the orientation,   $\langle \theta \rangle_{ |r_{i}-r_{j}| < r }$
-    is the average $\theta$ of all neighboring birds within a radius $r$
-    (specifically, $\langle \theta \rangle_{ |r_{i}-r_{j}| < r } =\arctan \left(\frac{\langle \sin \theta \rangle_{ |r_{i}-r_{j}| < r } }{\langle \cos \theta \rangle_{ |r_{i}-r_{j}| < r }}\right)  $),
-    $\Delta \theta_{i}(t)$ is a random number drawn uniformly from the interval $[-\eta/2,\eta/2]$,
-    $\mathbf{x}_{i}$ is the position of the $i$th bird (or particle), $v$ is the speed of an individual bird, and $\Delta t$ is the time step between updates.
+    where $\theta$ is the orientation, $\mathbf{x}_{i}$ is the position of the $i$th bird (or particle), $\langle \theta \rangle_{ |\mathbf{x}_{i}-\mathbf{x}_{j}| < r }$
+    is the average angle of all neighboring birds within a radius $r$
+    (specifically, $\langle \theta \rangle_{ |r_{i}-r_{j}| < r } =\arctan \left(\frac{\langle \sin \theta \rangle_{ |\mathbf{x}_{i}-\mathbf{x}_{j}| < r } }{\langle \cos \theta \rangle_{ |\mathbf{x}_{i}-\mathbf{x}_{j}| < r }}\right)  $),
+    $\Delta \theta_{i}(t)$ is a random number drawn uniformly from the interval $[-\eta/2,\eta/2]$, $v$ is the speed of an individual bird, and $\Delta t$ is the time step between updates.
     </p>
 
     <p>
@@ -205,7 +204,7 @@
     </div>
     <p class="caption" id = 'caption-vicsek'>
         Simulation 2 (Vicsek Model): Play with the parameters above to explore the model. Notice which parameters
-        lead to the ordered flocking phase.
+        lead to the ordered flocking phase. (Code is modified from [4])
     </p>
 </div>
 
@@ -251,7 +250,7 @@
     [2] Vicsek, T., & Zafeiris, A. (2012). Collective motion. Physics Reports, 517(3), 71-140.
     </div>
     <div class = 'ref' >
-    [3] Vicsek, T., Czirók, A., Ben-Jacob, E., Cohen, I., & Shochet, O. (1995). Novel type of phase transition in a system of self-driven particles. Physical review letters, 75(6), 1226.
+    [3] Vicsek, T., Czirók, A., Ben-Jacob, E., Cohen, I., & Shochet, O. (1995).  Novel type of phase transition in a system of self-driven particles. Physical review letters, 75(6), 1226.
     </div>
     <div class = 'ref' >
     [4] Shiffman, D.,  <a href="http://natureofcode.com/">Nature of Code</a>: Flocking , original source: <a href="https://p5js.org/examples/simulate-flocking.html"> P5.js | examples | Flocking</a>, <a href ="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative Commons License 4.0
