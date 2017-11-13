@@ -59,7 +59,7 @@
 		After stating that we are PhD students working at <a href="https://lsa.umich.edu/cscs/"> The Center for the Study of Complex Systems </a> (CSCS) at the University of Michigan a common question we both get is, "What is complex systems?" Easy question, right? Just describe the focus of CSCS. This turns out to be a surprisingly difficult task. CSCS doesn't have a single focus and complex systems is a broad and interdisciplinary subject. The definition of what a complex system is varies based on who you ask and what you read. This is the motivation behind this article. To start, here is our attempt at a rough definition. A <i> complex system </i> is a set of interacting parts that collectively form interesting global structures and patterns. The phenomenon where higher order behavior arrises from it's components is thought of as <i> emergence </i>. Emergence is one of the key characterstics of complex systems. We will describe more characterstics in the following section. Some common examples include the brain, an economy, immune system, and ecosystems.
 	</p>
 	<p>
-		In this article we will to describe some common characteristics of complex systems. We will explore some of these characeristics in the context of the flocking behavior of birds.
+		In this article we will to describe some common characteristics of complex systems. We will explore some of these characteristics in the context of the flocking behavior of birds.
     </p>
 
 	<p></p>
@@ -145,7 +145,7 @@
     Craig Reynold's Boid simulations can be summarised by the three simple local rules:
     </p>
     <ul>
-      <li><p><b>Seperation</b>: Avoid collisions with your neighbors </p></li>
+      <li><p><b>Seperation</b>: Avoid collisions with your neighbors. </p></li>
       <li><p><b>Cohesion</b>: Although keep close to your neighbors. </p></li>
       <li><p><b>Alignment</b>: Move in the general direction as your neighbors.</p></li>
     </ul>
@@ -153,6 +153,7 @@
     These rules are implimented by the following update scheme:
     $$ \mathbf{v}_{desired} = \mathbf{v}_{seperation} + \mathbf{v}_{cohesion} +  \mathbf{v}_{alignment}$$
     $$ \mathbf{r}_{i} (t + \Delta t) = \mathbf{r}_{i} (t) + \Delta t v_{desired} $$
+    While the update scheme gives the exact dynamics of the model. We can look at the three local rules and get a qualitative understanding of self-organization. Notice when you click rerun, with the following parameter settings: Population = 80, Seperation = 15, Cohesion = 40, Alignment = 20, that all of the 'boids' (birds) are randomly orgainzed at the beginnig. As the simulation runs you notice some emergence take place and we start to see self-organization. The biods start to move in a similar direction. How quick we go from a random orientation to self organization depends on the parameter values. In some cases, self-orgainization may not occur or has a long time horizon, for exmaple try these parameter settings: Population = 80, Seperation = 15, Cohession = 5, Alignment = 5. A fun game you could play with friends (or yourself) is to set various parameter values and guess if self-orgainzation will emerege and for an even more difficult challenge you can estimate the time horizon.
 
     </p>
     <h2>The Vicsek model
