@@ -24,6 +24,8 @@ var sketch_flock_vicsek = function(s) {
 
     var canvas;
 
+    var time_steps_since_start_vicsek;
+
     s.setup = function() {
         var canvasWidth = 320;
         var canvasHeight = 320;
@@ -70,6 +72,13 @@ var sketch_flock_vicsek = function(s) {
         order_parameter_following_text.parent(order_parameter_holder)
 
 
+        time_holder_vicsek = s.createDiv('');
+        time_holder_vicsek.parent('#button-vicsek')
+        time_leading_text_vicsek = s.createSpan('Time steps $t = $ ');
+        time_leading_text_vicsek.parent(time_holder_vicsek)
+        time_following_text_vicsek = s.createSpan(' ');
+        time_following_text_vicsek.parent(time_holder_vicsek)
+
         reRunButton = s.createButton('Rerun');
         reRunButton.parent('#button-vicsek')
 
@@ -86,6 +95,7 @@ var sketch_flock_vicsek = function(s) {
             var b = new s.Boid(s.random(s.width),s.random(s.height));
             flock.addBoid(b);
         }
+        time_steps_since_start_vicsek=0
     }
 
 
@@ -105,6 +115,8 @@ var sketch_flock_vicsek = function(s) {
         flock.run(desirednoise, desiredspeed);
         var order_parameter = flock.calc_order_parameter(desiredspeed);
         order_parameter_following_text.html(s.str(order_parameter.toFixed(2)))
+        time_steps_since_start_vicsek++;
+        time_following_text_vicsek.html(s.str(time_steps_since_start_vicsek));
 
     }
 

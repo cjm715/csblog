@@ -28,6 +28,8 @@ var sketch_flock = function(s) {
 
     var canvas;
 
+    var time_steps_since_start;
+
     s.setup = function() {
         var canvasWidth = 320;
         var canvasHeight = 320;
@@ -74,6 +76,14 @@ var sketch_flock = function(s) {
         alignSlider = s.createSlider(0, 200, 20);
         alignSlider.parent(alignControls);
 
+
+        time_holder = s.createDiv('');
+        time_holder.parent('#button')
+        time_leading_text = s.createSpan('Time steps $t = $ ');
+        time_leading_text.parent(time_holder)
+        time_following_text = s.createSpan(' ');
+        time_following_text.parent(time_holder)
+
         reRunButton = s.createButton('Rerun');
         reRunButton.parent('#button')
 
@@ -90,6 +100,7 @@ var sketch_flock = function(s) {
             var b = new s.Boid(s.random(s.width),s.random(s.height));
             flock.addBoid(b);
         }
+        time_steps_since_start = 0
     }
 
 
@@ -110,7 +121,10 @@ var sketch_flock = function(s) {
         desiredCohesion = cohesionTxtBox.value();
 
         flock.run(desiredSeperation, neighbordist, desiredCohesion);
-    }
+        time_steps_since_start++;
+        time_following_text.html(s.str(time_steps_since_start));
+
+    };
 
 
     s.Flock = function() {
