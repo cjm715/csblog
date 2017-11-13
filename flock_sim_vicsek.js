@@ -94,6 +94,17 @@ var sketch_flock_vicsek = function(s) {
         caption.style(`width: ${canvasWidth}`);
 
         s.initializeFlockSim();
+
+        reRunButton.mousePressed(s.initializeFlockSim);
+        startButton.mouseReleased(s.startFlockSim);
+        stopButton.mouseReleased(s.stopFlockSim);
+        populationSlider.input(s.populationSliderEvent);
+        populationTxtBox.input(s.populationTextBoxEvent);
+        speedSlider.input(s.speedSliderEvent);
+        speedTxtBox.input(s.speedTxtBoxEvent);
+        noiseSlider.input(s.noiseSliderEvent);
+        noiseTxtBox.input(s.noiseTxtBoxEvent);
+
     }
 
     s.initializeFlockSim = function() {
@@ -117,15 +128,6 @@ var sketch_flock_vicsek = function(s) {
     }
 
     s.draw = function() {
-        reRunButton.mousePressed(s.initializeFlockSim);
-        startButton.mouseReleased(s.startFlockSim);
-        stopButton.mouseReleased(s.stopFlockSim);
-        populationSlider.input(s.populationSliderEvent);
-        populationTxtBox.input(s.populationTextBoxEvent);
-        speedSlider.input(s.speedSliderEvent);
-        speedTxtBox.input(s.speedTxtBoxEvent);
-        noiseSlider.input(s.noiseSliderEvent);
-        noiseTxtBox.input(s.noiseTxtBoxEvent);
 
         desirednoise = noiseTxtBox.value();
         desiredspeed = speedTxtBox.value();

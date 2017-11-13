@@ -99,6 +99,18 @@ var sketch_flock = function(s) {
         caption.style(`width: ${canvasWidth}`);
 
         s.initializeFlockSim();
+
+        reRunButton.mousePressed(s.initializeFlockSim);
+        startButton.mouseReleased(s.startFlockSim);
+        stopButton.mouseReleased(s.stopFlockSim);
+        populationSlider.input(s.populationSliderEvent);
+        populationTxtBox.input(s.populationTextBoxEvent);
+        seperationTxtBox.input(s.seperationTxtBoxEvent);
+        seperationSlider.input(s.seperationSliderEvent);
+        cohesionSlider.input(s.cohesionSliderEvent);
+        cohesionTxtBox.input(s.cohesionTxtBoxEvent);
+        alignSlider.input(s.alignSliderEvent);
+        alignTxtBox.input(s.alignTxtBoxEvent);
     }
 
     s.initializeFlockSim = function() {
@@ -121,17 +133,7 @@ var sketch_flock = function(s) {
     }
     s.draw = function() {
 
-        reRunButton.mousePressed(s.initializeFlockSim);
-        startButton.mouseReleased(s.startFlockSim);
-        stopButton.mouseReleased(s.stopFlockSim);
-        populationSlider.input(s.populationSliderEvent);
-        populationTxtBox.input(s.populationTextBoxEvent);
-        seperationTxtBox.input(s.seperationTxtBoxEvent);
-        seperationSlider.input(s.seperationSliderEvent);
-        cohesionSlider.input(s.cohesionSliderEvent);
-        cohesionTxtBox.input(s.cohesionTxtBoxEvent);
-        alignSlider.input(s.alignSliderEvent);
-        alignTxtBox.input(s.alignTxtBoxEvent);
+
 
         desiredSeperation = seperationTxtBox.value();
         neighbordist = alignTxtBox.value();
