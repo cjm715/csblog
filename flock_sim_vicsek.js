@@ -10,6 +10,8 @@
 var sketch_flock_vicsek = function(s) {
     var flock;
     var reRunButton;
+    var startButton;
+    var stopButton;
 
     var populationSlider;
     var speedSlider;
@@ -63,9 +65,9 @@ var sketch_flock_vicsek = function(s) {
         noiseSlider = s.createSlider(0, 2.*s.PI,0.1*s.PI,0.01);
         noiseSlider.parent(noiseControls);
 
-
+        var button_row = s.select('#button-vicsek')
         order_parameter_holder = s.createDiv('');
-        order_parameter_holder.parent('#button-vicsek')
+        order_parameter_holder.parent(button_row)
         order_parameter_leading_text = s.createSpan('Order parameter $ \\varphi = $ ');
         order_parameter_leading_text.parent(order_parameter_holder)
         order_parameter_following_text = s.createSpan(' ');
@@ -73,16 +75,22 @@ var sketch_flock_vicsek = function(s) {
 
 
         time_holder_vicsek = s.createDiv('');
-        time_holder_vicsek.parent('#button-vicsek')
+        time_holder_vicsek.parent(button_row)
         time_leading_text_vicsek = s.createSpan('Time steps $t = $ ');
         time_leading_text_vicsek.parent(time_holder_vicsek)
         time_following_text_vicsek = s.createSpan(' ');
         time_following_text_vicsek.parent(time_holder_vicsek)
 
         reRunButton = s.createButton('Rerun');
-        reRunButton.parent('#button-vicsek')
+        reRunButton.parent(button_row)
 
-        var caption = s.select('#caption-vicsek');
+        startButton = s.createButton('Start');
+        startButton.parent(button_row)
+
+        stopButton = s.createButton('Stop');
+        stopButton.parent(button_row)
+
+        caption = s.select('#caption-vicsek');
         caption.style(`width: ${canvasWidth}`);
 
         s.initializeFlockSim();
@@ -96,12 +104,22 @@ var sketch_flock_vicsek = function(s) {
             flock.addBoid(b);
         }
         time_steps_since_start_vicsek=0
+        running_flag_vicsek = true
+
     }
 
+    s.stopFlockSim = function(){
+      running_flag_vicsek = false
+    }
+
+    s.startFlockSim = function(){
+      running_flag_vicsek = true
+    }
 
     s.draw = function() {
-        s.background(100);
         reRunButton.mousePressed(s.initializeFlockSim);
+        startButton.mouseReleased(s.startFlockSim);
+        stopButton.mouseReleased(s.stopFlockSim);
         populationSlider.input(s.populationSliderEvent);
         populationTxtBox.input(s.populationTextBoxEvent);
         speedSlider.input(s.speedSliderEvent);
@@ -112,12 +130,14 @@ var sketch_flock_vicsek = function(s) {
         desirednoise = noiseTxtBox.value();
         desiredspeed = speedTxtBox.value();
 
-        flock.run(desirednoise, desiredspeed);
-        var order_parameter = flock.calc_order_parameter(desiredspeed);
-        order_parameter_following_text.html(s.str(order_parameter.toFixed(2)))
-        time_steps_since_start_vicsek++;
-        time_following_text_vicsek.html(s.str(time_steps_since_start_vicsek));
-
+        if (running_flag_vicsek){
+          s.background(100);
+          flock.run(desirednoise, desiredspeed);
+          var order_parameter = flock.calc_order_parameter(desiredspeed);
+          order_parameter_following_text.html(s.str(order_parameter.toFixed(2)))
+          time_steps_since_start_vicsek++;
+          time_following_text_vicsek.html(s.str(time_steps_since_start_vicsek));
+       }
     }
 
 

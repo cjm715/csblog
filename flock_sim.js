@@ -30,6 +30,8 @@ var sketch_flock = function(s) {
 
     var time_steps_since_start;
 
+    var running_flag = true;
+
     s.setup = function() {
         var canvasWidth = 320;
         var canvasHeight = 320;
@@ -87,6 +89,12 @@ var sketch_flock = function(s) {
         reRunButton = s.createButton('Rerun');
         reRunButton.parent('#button')
 
+        startButton = s.createButton('Start');
+        startButton.parent('#button')
+
+        stopButton = s.createButton('Stop');
+        stopButton.parent('#button')
+
         var caption = s.select('#caption');
         caption.style(`width: ${canvasWidth}`);
 
@@ -101,12 +109,21 @@ var sketch_flock = function(s) {
             flock.addBoid(b);
         }
         time_steps_since_start = 0
+        running_flag = true
     }
 
+    s.stopFlockSim = function(){
+      running_flag = false
+    }
 
+    s.startFlockSim = function(){
+      running_flag = true
+    }
     s.draw = function() {
-        s.background(100);
+
         reRunButton.mousePressed(s.initializeFlockSim);
+        startButton.mouseReleased(s.startFlockSim);
+        stopButton.mouseReleased(s.stopFlockSim);
         populationSlider.input(s.populationSliderEvent);
         populationTxtBox.input(s.populationTextBoxEvent);
         seperationTxtBox.input(s.seperationTxtBoxEvent);
@@ -120,9 +137,13 @@ var sketch_flock = function(s) {
         neighbordist = alignTxtBox.value();
         desiredCohesion = cohesionTxtBox.value();
 
-        flock.run(desiredSeperation, neighbordist, desiredCohesion);
-        time_steps_since_start++;
-        time_following_text.html(s.str(time_steps_since_start));
+
+        if (running_flag) {
+          s.background(100);
+          flock.run(desiredSeperation, neighbordist, desiredCohesion);
+          time_steps_since_start++;
+          time_following_text.html(s.str(time_steps_since_start));
+        }
 
     };
 
