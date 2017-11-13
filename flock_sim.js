@@ -30,7 +30,7 @@ var sketch_flock = function(s) {
 
     s.setup = function() {
         var canvasWidth = 320;
-        var canvasHeight = 360;
+        var canvasHeight = 320;
 
         var canvasDiv = s.select('#canvasDiv')
         var sketchDiv = s.select('#sketch-holder')
@@ -196,11 +196,32 @@ var sketch_flock = function(s) {
             s.push();
             s.translate(this.position.x, this.position.y);
             s.rotate(theta);
+
+            //triangle
             s.beginShape();
             s.vertex(0, -this.r * 2);
             s.vertex(-this.r, this.r * 2);
             s.vertex(this.r, this.r * 2);
             s.endShape(s.CLOSE);
+            //
+            // s.beginShape();
+            // bodywid = 0.25
+            // wingwid =2.0
+            // s.vertex(this.r * 0,this.r * -2);
+            // s.vertex(this.r * bodywid,this.r * -1);
+            // s.vertex(this.r * 0.6*wingwid ,this.r * -1);
+            // s.vertex(this.r * wingwid ,this.r * 0);
+            // s.vertex(this.r * bodywid,this.r * 0);
+            // s.vertex(this.r * 0.5*bodywid,this.r * 2);
+            // s.vertex(this.r * 1.0,this.r * 2.5);
+            // s.vertex(this.r * -1.0,this.r * 2.5);
+            // s.vertex(this.r * -0.5*bodywid,this.r * 2.0);
+            // s.vertex(this.r * -bodywid,this.r * 0);
+            // s.vertex(this.r * -wingwid,this.r * 0);
+            // s.vertex(this.r * -0.6*wingwid ,this.r * -1);
+            // s.vertex(this.r * -bodywid,this.r * -1);
+            // s.endShape(s.CLOSE);
+
             s.pop();
         };
 

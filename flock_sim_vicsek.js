@@ -26,7 +26,7 @@ var sketch_flock_vicsek = function(s) {
 
     s.setup = function() {
         var canvasWidth = 320;
-        var canvasHeight = 360;
+        var canvasHeight = 320;
 
         var canvasDiv = s.select('#canvasDiv-vicsek')
         var sketchDiv = s.select('#sketch-holder-vicsek')
@@ -49,17 +49,26 @@ var sketch_flock_vicsek = function(s) {
 
         // Speed Controls
         var speedControls = s.select('#speed-vicsek');
-        speedTxtBox = s.createInput(5);
+        speedTxtBox = s.createInput(2.5);
         speedTxtBox.parent(speedControls);
-        speedSlider = s.createSlider(0, 20, 5,0.1);
+        speedSlider = s.createSlider(0.0001, 10, 2.5,0.1);
         speedSlider.parent(speedControls);
 
         // Noise Controls
         var noiseControls = s.select('#noise-vicsek');
         noiseTxtBox = s.createInput(0.1*s.PI);
         noiseTxtBox.parent(noiseControls);
-        noiseSlider = s.createSlider(0, s.PI/2.0,0.1*s.PI,0.01);
+        noiseSlider = s.createSlider(0, s.PI/4.0,0.1*s.PI,0.01);
         noiseSlider.parent(noiseControls);
+
+
+        order_parameter_holder = s.createDiv('');
+        order_parameter_holder.parent('#button-vicsek')
+        order_parameter_leading_text = s.createSpan('Order parameter $ \\varphi = $ ');
+        order_parameter_leading_text.parent(order_parameter_holder)
+        order_parameter_following_text = s.createSpan(' ');
+        order_parameter_following_text.parent(order_parameter_holder)
+
 
         reRunButton = s.createButton('Rerun');
         reRunButton.parent('#button-vicsek')
@@ -94,6 +103,9 @@ var sketch_flock_vicsek = function(s) {
         desiredspeed = speedTxtBox.value();
 
         flock.run(desirednoise, desiredspeed);
+        var order_parameter = flock.calc_order_parameter(desiredspeed);
+        order_parameter_following_text.html(s.str(order_parameter.toFixed(2)))
+
     }
 
 
@@ -106,6 +118,19 @@ var sketch_flock_vicsek = function(s) {
                 this.boids[i].run(this.boids, desirednoise, desiredspeed); // Passing the entire list of boids to each boid individually
             }
         };
+
+        this.calc_order_parameter = function(desiredspeed){
+            // calculate group speed
+            var sum = s.createVector(0, 0);
+            for (var i = 0; i < this.boids.length; i++) {
+                sum.add(this.boids[i].velocity);
+            }
+            sum.div(this.boids.length);
+            group_speed = sum.mag();
+            order_parameter = group_speed / desiredspeed
+            return order_parameter;
+
+        }
 
         this.addBoid = function(b) {
             this.boids.push(b);
