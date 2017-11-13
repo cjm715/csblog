@@ -4,7 +4,7 @@ body {
     margin: 60px auto;
     width: 70%;
     font-family:'Computer Modern Serif';
-    font-size: 12px;
+    font-size: 13px;
 }
 nav ul, footer ul {
     font-family:'Computer Modern Serif';
@@ -25,6 +25,10 @@ a:hover {
 }
 h1 {
     font-size: 5em;
+    font-family:'Computer Modern Serif';
+}
+h2 {
+    font-size: 1.6em;
     font-family:'Computer Modern Serif';
 }
 p {
@@ -79,15 +83,15 @@ table, tr, td{
 
 .controlRow [type="text"] {
     position: absolute;
-    left: 30%;
-    width: 10%;
+    left: 40%;
+    width: 15%;
 }
 
 
 
 .controlRow [type="range"] {
     position: absolute;
-    left: 45%;
+    left: 55%;
     width: 40%;
 }
 
