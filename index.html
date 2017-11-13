@@ -145,7 +145,7 @@
     Craig Reynold's Boid simulations can be summarised by the three simple local rules:
     </p>
     <ul>
-      <li><p><b>Seperation</b>: Avoid collisions with your neighbors </p></li>
+      <li><p><b>Seperation</b>: Avoid collisions with your neighbors. </p></li>
       <li><p><b>Cohesion</b>: Although keep close to your neighbors. </p></li>
       <li><p><b>Alignment</b>: Move in the general direction as your neighbors.</p></li>
     </ul>
@@ -153,6 +153,7 @@
     These rules are implimented by the following update scheme:
     $$ \mathbf{v}_{desired} = \mathbf{v}_{seperation} + \mathbf{v}_{cohesion} +  \mathbf{v}_{alignment}$$
     $$ \mathbf{r}_{i} (t + \Delta t) = \mathbf{r}_{i} (t) + \Delta t v_{desired} $$
+    While the update scheme gives the exact dynamics of the model. We can look at the three local rules and get a qualitative understanding of self-organization. Notice when you click rerun, with the following parameter settings: Population = 80, Seperation = 15, Cohesion = 40, Alignment = 20, that all of the 'boids' (birds) are randomly orgainzed at the beginnig. As the simulation runs you notice some emergence take place and we start to see self-organization. The biods start to move in a similar direction. How quick we go from a random orientation to self organization depends on the parameter values. In some cases, self-orgainization may not occur or has a long time horizon, for exmaple try these parameter settings: Population = 80, Seperation = 15, Cohession = 5, Alignment = 5. A fun game you could play with friends (or yourself) is to set various parameter values and guess if self-orgainzation will emerege and for an even more difficult challenge you can estimate the time horizon.
 
     </p>
     <h2>The Vicsek model
