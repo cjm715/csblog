@@ -48,7 +48,7 @@ var sketch_flock = function(s) {
         var populationControls = s.select('#population');
         populationTxtBox = s.createInput(80);
         populationTxtBox.parent(populationControls);
-        populationSlider = s.createSlider(0, 150, populationTxtBox.value());
+        populationSlider = s.createSlider(0, 150, 80);
         populationSlider.parent(populationControls);
 
 
@@ -56,7 +56,7 @@ var sketch_flock = function(s) {
         var seperationControls = s.select('#seperation');
         seperationTxtBox = s.createInput(16);
         seperationTxtBox.parent(seperationControls);
-        seperationSlider = s.createSlider(0, 200, seperationTxtBox.value());
+        seperationSlider = s.createSlider(0, 200, 16);
         seperationSlider.parent(seperationControls);
 
 
@@ -64,14 +64,14 @@ var sketch_flock = function(s) {
         var cohesionControls = s.select('#cohesion');
         cohesionTxtBox = s.createInput(44);
         cohesionTxtBox.parent(cohesionControls);
-        cohesionSlider = s.createSlider(0, 200, cohesionTxtBox.value());
+        cohesionSlider = s.createSlider(0, 200, 44);
         cohesionSlider.parent(cohesionControls);
 
         // Align Controls
         var alignControls = s.select('#alignment');
         alignTxtBox = s.createInput(20);
         alignTxtBox.parent(alignControls);
-        alignSlider = s.createSlider(0, 200, alignTxtBox.value());
+        alignSlider = s.createSlider(0, 200, 20);
         alignSlider.parent(alignControls);
 
         reRunButton = s.createButton('Rerun');

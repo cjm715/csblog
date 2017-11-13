@@ -51,14 +51,14 @@ var sketch_flock_vicsek = function(s) {
         var speedControls = s.select('#speed-vicsek');
         speedTxtBox = s.createInput(5);
         speedTxtBox.parent(speedControls);
-        speedSlider = s.createSlider(0, 20, speedTxtBox.value(),0.1);
+        speedSlider = s.createSlider(0, 20, 5,0.1);
         speedSlider.parent(speedControls);
 
         // Noise Controls
         var noiseControls = s.select('#noise-vicsek');
         noiseTxtBox = s.createInput(0.1*s.PI);
         noiseTxtBox.parent(noiseControls);
-        noiseSlider = s.createSlider(0, s.PI/2.0, noiseTxtBox.value(),0.01);
+        noiseSlider = s.createSlider(0, s.PI/2.0,0.1*s.PI,0.01);
         noiseSlider.parent(noiseControls);
 
         reRunButton = s.createButton('Rerun');
