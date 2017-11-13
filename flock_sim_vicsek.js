@@ -58,7 +58,7 @@ var sketch_flock_vicsek = function(s) {
         var noiseControls = s.select('#noise-vicsek');
         noiseTxtBox = s.createInput(0.1*s.PI);
         noiseTxtBox.parent(noiseControls);
-        noiseSlider = s.createSlider(0, s.PI/4.0,0.1*s.PI,0.01);
+        noiseSlider = s.createSlider(0, 2.*s.PI,0.1*s.PI,0.01);
         noiseSlider.parent(noiseControls);
 
 
@@ -142,7 +142,7 @@ var sketch_flock_vicsek = function(s) {
         this.theta = s.random(-3.1415, 3.14159)
         this.velocity = s.createVector(0, 0);
         this.position = s.createVector(x, y);
-        this.r = 3.0;
+        this.r = 10.0;
         this.dt = 1.0;
 
         this.run = function(boids, desirednoise, desiredspeed) {
@@ -154,7 +154,7 @@ var sketch_flock_vicsek = function(s) {
 
         // Method to update location
         this.update = function(boids,desirednoise, desiredspeed) {
-            var noise_term = s.random(-desirednoise, desirednoise)
+            var noise_term = s.random(-desirednoise/2., desirednoise/2.)
             var avg_theta = this.calc_avg_theta(boids)
             this.theta = avg_theta + noise_term
             this.velocity = s.createVector(s.sin(this.theta), s.cos(this.theta));
@@ -181,9 +181,10 @@ var sketch_flock_vicsek = function(s) {
             s.translate(this.position.x, this.position.y);
             s.rotate(theta);
             s.beginShape();
-            s.vertex(0, -this.r * 2);
-            s.vertex(-this.r, this.r * 2);
-            s.vertex(this.r, this.r * 2);
+            scale = 3.0
+            s.vertex(0, -scale* 2);
+            s.vertex(-scale, scale * 2);
+            s.vertex(scale, scale * 2);
             s.endShape(s.CLOSE);
             s.pop();
         };
@@ -191,7 +192,7 @@ var sketch_flock_vicsek = function(s) {
         this.calc_avg_theta = function(boids) {
             var sum_cos_theta = 0.0
             var sum_sin_theta = 0.0
-            var neighbordist = 3*this.r
+            var neighbordist = this.r
             var count = 0;
             for (var i = 0; i < boids.length; i++) {
                 var d = p5.Vector.dist(this.position, boids[i].position);

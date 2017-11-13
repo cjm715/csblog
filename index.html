@@ -135,7 +135,7 @@
             </table>
         </div>
         <p class="caption" id = 'caption'>
-            Simulation 1: Play with the parameters above to explore the model. Notice which parameters
+            Simulation 1 (Craig Reynold's Boids Model): Play with the parameters above to explore the model. Notice which parameters
             lead to the ordered flocking phase.
         </p>
     </div>
@@ -211,23 +211,44 @@
     where $N$ is the number of birds and $\mathbf{v}_{i} = v\begin{pmatrix} \cos\theta_i(t) \\ \sin\theta_i(t) \end{pmatrix}$ is the velocity of an individual bird. The order parameter is simply the ratio of the group speed divided by the indiviudal speed. This order paramter indicates if the flock is disordered ($\varphi = 0$) or ordered ($\varphi \sim 1$) when the birds are flying in the same general direction as a whole.
     </p>
 
+    <p>
+    Simulation 2 is running the Vicsek model. Modify the parameters with the sliders
+    to see how the system behaves under different parameter choices and observe
+    the order parameter. Although it may be hard to tell, the relationship between these parameter choices do not produces a linear changes to the order parameter $\varphi$. This is due to the nonlinearity of the system --- one of the core characteristics of complex systems mentioned earlier. Instead of a linear relationship, we have a scaling law. Vicsek <i>et al.</i> showed that the relationship between $\varphi$ and the density of particles
+    $\rho = N/L^2$ (where $L$ is the domain box length) is given by
+    $$ \varphi \sim (\rho - \rho_{c}(L))^{\delta} $$
+    where $\rho_{c}(L)$ is the critical transition density, and $\delta$ is a critical exponent.
+    </p>
 
-
- <!--
-        - discription of interactive figure
-            - things to explore...what parameters result in certain behavoirs
-            - zero out params one at a time and examine behavior
-        - more detailed Vicsek model (has connections to active matter)
-    - conclusion
-        -
-
-    - Credit Schiffman -->
 
 
 
     <h2> Summary </h2>
+    <p>
+    Flocking behavior as modeled here can exhibit many of the features of Complex
+    systems. We explored nonlinearity, self-organization, and phase transitions in
+    the above two models of flocking.  We hope that this demonstration helps with
+    understanding the ideas behind complex systems and their interesting behaviors.
+    </p>
     <h2> Acknowledgements </h2>
+    <p>
+    The code in the simulations used the library P5.js. The code was modified
+    from examples provided on the <a href= "https://p5js.org">P5.js/processing website </a>.
+    The Processing organization and Daniel Shiffman's tutorial series were extremely valuable resources. Thank you.
+
+    </p>
     <h2> References  </h2>
+    <p>
+    <div class = 'ref'>
+    [1] Reynolds, C. W. (1987). Flocks, herds and schools: A distributed behavioral model. ACM SIGGRAPH computer graphics, 21(4), 25-34.
+    </div>
+    <div  class = 'ref'>
+    [2] Vicsek, T., & Zafeiris, A. (2012). Collective motion. Physics Reports, 517(3), 71-140.
+    </div>
+    <div class = 'ref' >
+    [3] Vicsek, T., Czirók, A., Ben-Jacob, E., Cohen, I., & Shochet, O. (1995). Novel type of phase transition in a system of self-driven particles. Physical review letters, 75(6), 1226.
+    </div>
+
 
 
 </body>
